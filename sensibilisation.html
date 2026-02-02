@@ -1,51 +1,262 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sensibilisation - CyberGuide</title>
+    <link rel="icon" href="cyber.png" type="image/png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .nav { background: #1e3a5f; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
-        .nav .logo { height: 50px; }
-        .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
-        .nav a { color: white; text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: #00d4d4; }
-        .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #00d4d4; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 3px solid #00d4d4; }
-        .tab { padding: 1rem 2rem; background: #e2e8f0; cursor: pointer; border: none; font-size: 1rem; font-weight: 500; border-radius: 8px 8px 0 0; }
-        .tab:hover { background: #cbd5e0; }
-        .tab.active { background: #00b4b4; color: white; }
-        .tab-content { display: none; padding: 2rem; background: #f7fafc; border: 1px solid #e2e8f0; border-top: none; }
-        .tab-content.active { display: block; }
-        .section { margin-bottom: 2rem; }
-        .section h3 { color: #0891b2; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
-        .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-        .vocab-item { background: white; padding: 1rem; border-radius: 5px; border-left: 4px solid #00d4d4; }
-        .vocab-item strong { color: #0891b2; }
-        .threat-card { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; }
-        .threat-card h4 { color: #c53030; margin-bottom: 0.5rem; }
-        .threat-card .example { background: #fff5f5; padding: 0.75rem; border-radius: 5px; margin-top: 0.75rem; font-size: 0.9rem; }
-        .checklist { background: white; padding: 1.5rem; border-radius: 8px; }
-        .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0; }
-        .checklist-item:last-child { border-bottom: none; }
-        .checkbox { width: 20px; height: 20px; border: 2px solid #00b4b4; border-radius: 4px; flex-shrink: 0; cursor: pointer; }
-        .checkbox.checked { background: #00b4b4; position: relative; }
-        .checkbox.checked::after { content: '✓'; color: white; position: absolute; top: -2px; left: 3px; font-size: 14px; }
-        .best-practice { background: #f0fdfd; padding: 1rem; border-radius: 5px; margin-bottom: 0.75rem; border-left: 3px solid #00d4d4; }
-        .best-practice strong { color: #0891b2; }
-        .warning-box { background: #fed7d7; border-left: 4px solid #c53030; padding: 1rem; margin: 1rem 0; border-radius: 0 5px 5px 0; }
-        .info-box { background: #f0fdfd; border-left: 4px solid #00d4d4; padding: 1rem; margin: 1rem 0; border-radius: 0 5px 5px 0; }
-        footer { background: #1e3a5f; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-        .fiche-reflexe { background: #f0fdfd; border: 2px solid #00d4d4; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; }
-        .fiche-reflexe h4 { color: #0891b2; margin-bottom: 1rem; }
-        .fiche-reflexe ol { margin-left: 1.5rem; }
-        .fiche-reflexe li { margin-bottom: 0.5rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .nav {
+            background: #1e3a5f;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav .logo {
+            height: 100px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #00d4d4;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #00d4d4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 0;
+            border-bottom: 3px solid #00d4d4;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            background: #e2e8f0;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab:hover {
+            background: #cbd5e0;
+        }
+
+        .tab.active {
+            background: #00b4b4;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section h3 {
+            color: #0891b2;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .vocab-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #00d4d4;
+        }
+
+        .vocab-item strong {
+            color: #0891b2;
+        }
+
+        .threat-card {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .threat-card h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+        }
+
+        .threat-card .example {
+            background: #fff5f5;
+            padding: 0.75rem;
+            border-radius: 5px;
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .checklist {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00b4b4;
+            border-radius: 4px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .checkbox.checked {
+            background: #00b4b4;
+            position: relative;
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: -2px;
+            left: 3px;
+            font-size: 14px;
+        }
+
+        .best-practice {
+            background: #f0fdfd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 0.75rem;
+            border-left: 3px solid #00d4d4;
+        }
+
+        .best-practice strong {
+            color: #0891b2;
+        }
+
+        .warning-box {
+            background: #fed7d7;
+            border-left: 4px solid #c53030;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .info-box {
+            background: #f0fdfd;
+            border-left: 4px solid #00d4d4;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .fiche-reflexe {
+            background: #f0fdfd;
+            border: 2px solid #00d4d4;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .fiche-reflexe h4 {
+            color: #0891b2;
+            margin-bottom: 1rem;
+        }
+
+        .fiche-reflexe ol {
+            margin-left: 1.5rem;
+        }
+
+        .fiche-reflexe li {
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
+
 <body>
     <nav class="nav">
         <a href="index.html"><img src="cyber.png" alt="CyberGuide" class="logo"></a>
@@ -78,7 +289,8 @@
                 <div class="vocab-grid">
                     <div class="vocab-item">
                         <strong>Phishing (Hameçonnage)</strong>
-                        <p>Email ou message frauduleux qui tente de vous faire cliquer sur un lien malveillant ou révéler vos identifiants.</p>
+                        <p>Email ou message frauduleux qui tente de vous faire cliquer sur un lien malveillant ou
+                            révéler vos identifiants.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>Rançongiciel (Ransomware)</strong>
@@ -86,11 +298,13 @@
                     </div>
                     <div class="vocab-item">
                         <strong>Mot de passe fort</strong>
-                        <p>Mot de passe d'au moins 12 caractères, mélangeant majuscules, minuscules, chiffres et caractères spéciaux.</p>
+                        <p>Mot de passe d'au moins 12 caractères, mélangeant majuscules, minuscules, chiffres et
+                            caractères spéciaux.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>MFA / 2FA</strong>
-                        <p>Authentification à plusieurs facteurs : en plus du mot de passe, un code envoyé par SMS ou une application.</p>
+                        <p>Authentification à plusieurs facteurs : en plus du mot de passe, un code envoyé par SMS ou
+                            une application.</p>
                     </div>
                 </div>
             </section>
@@ -99,56 +313,88 @@
                 <h3>Les menaces qui vous concernent</h3>
                 <div class="threat-card">
                     <h4>Le Phishing - La menace n°1</h4>
-                    <p>91% des cyberattaques commencent par un email de phishing. Les attaquants se font passer pour votre banque, votre direction, un collègue ou un service connu.</p>
+                    <p>91% des cyberattaques commencent par un email de phishing. Les attaquants se font passer pour
+                        votre banque, votre direction, un collègue ou un service connu.</p>
                     <div class="example">
-                        <strong>Exemple réel :</strong> "Votre colis DHL est en attente. Cliquez ici pour reprogrammer la livraison." Le lien mène vers un faux site qui vole vos identifiants.
+                        <strong>Exemple réel :</strong> "Votre colis DHL est en attente. Cliquez ici pour reprogrammer
+                        la livraison." Le lien mène vers un faux site qui vole vos identifiants.
                     </div>
                 </div>
                 <div class="threat-card">
                     <h4>La compromission de compte</h4>
-                    <p>Si vous utilisez le même mot de passe sur plusieurs sites, une fuite sur un site compromet tous vos comptes.</p>
+                    <p>Si vous utilisez le même mot de passe sur plusieurs sites, une fuite sur un site compromet tous
+                        vos comptes.</p>
                     <div class="example">
-                        <strong>Exemple réel :</strong> Un employé utilise le même mot de passe pour LinkedIn et son email professionnel. LinkedIn est piraté → l'attaquant accède à l'email pro.
+                        <strong>Exemple réel :</strong> Un employé utilise le même mot de passe pour LinkedIn et son
+                        email professionnel. LinkedIn est piraté → l'attaquant accède à l'email pro.
                     </div>
                 </div>
                 <div class="threat-card">
                     <h4>La perte ou le vol de matériel</h4>
-                    <p>Un ordinateur portable ou téléphone perdu peut contenir des données sensibles accessibles sans protection.</p>
+                    <p>Un ordinateur portable ou téléphone perdu peut contenir des données sensibles accessibles sans
+                        protection.</p>
                 </div>
             </section>
 
             <section class="section">
                 <h3>Bonnes pratiques au quotidien</h3>
                 <div class="best-practice">
-                    <strong>1. Vérifiez l'expéditeur</strong> - Passez la souris sur l'adresse email pour voir la vraie adresse. Méfiez-vous des adresses étranges.
+                    <strong>1. Vérifiez l'expéditeur</strong> - Passez la souris sur l'adresse email pour voir la vraie
+                    adresse. Méfiez-vous des adresses étranges.
                 </div>
                 <div class="best-practice">
-                    <strong>2. Ne cliquez pas impulsivement</strong> - En cas de doute, contactez l'expéditeur par un autre canal (téléphone).
+                    <strong>2. Ne cliquez pas impulsivement</strong> - En cas de doute, contactez l'expéditeur par un
+                    autre canal (téléphone).
                 </div>
                 <div class="best-practice">
-                    <strong>3. Utilisez des mots de passe uniques</strong> - Un mot de passe différent pour chaque service. Utilisez un gestionnaire de mots de passe.
+                    <strong>3. Utilisez des mots de passe uniques</strong> - Un mot de passe différent pour chaque
+                    service. Utilisez un gestionnaire de mots de passe.
                 </div>
                 <div class="best-practice">
-                    <strong>4. Activez la double authentification</strong> - Partout où c'est possible (email, banque, réseaux sociaux).
+                    <strong>4. Activez la double authentification</strong> - Partout où c'est possible (email, banque,
+                    réseaux sociaux).
                 </div>
                 <div class="best-practice">
-                    <strong>5. Verrouillez votre poste</strong> - Windows + L dès que vous quittez votre bureau, même 2 minutes.
+                    <strong>5. Verrouillez votre poste</strong> - Windows + L dès que vous quittez votre bureau, même 2
+                    minutes.
                 </div>
                 <div class="best-practice">
-                    <strong>6. Signalez les incidents</strong> - En cas de doute, prévenez immédiatement votre service IT. Il vaut mieux une fausse alerte qu'une vraie attaque ignorée.
+                    <strong>6. Signalez les incidents</strong> - En cas de doute, prévenez immédiatement votre service
+                    IT. Il vaut mieux une fausse alerte qu'une vraie attaque ignorée.
                 </div>
             </section>
 
             <section class="section">
                 <h3>Checklist de l'employé cyber-responsable</h3>
                 <div class="checklist">
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>J'utilise des mots de passe différents pour chaque compte</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>J'ai activé la double authentification sur mes comptes sensibles</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je vérifie l'expéditeur avant de cliquer sur un lien</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je verrouille mon poste quand je m'absente</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je ne branche pas de clé USB inconnue</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je sais qui contacter en cas d'incident suspect</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je ne partage pas mes identifiants avec mes collègues</span></div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>J'utilise des mots
+                            de passe différents pour chaque compte</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>J'ai activé la
+                            double authentification sur mes comptes sensibles</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je vérifie
+                            l'expéditeur avant de cliquer sur un lien</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je verrouille mon
+                            poste quand je m'absente</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je ne branche pas
+                            de clé USB inconnue</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je sais qui
+                            contacter en cas d'incident suspect</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Je ne partage pas
+                            mes identifiants avec mes collègues</span>
+                    </div>
                 </div>
             </section>
 
@@ -171,27 +417,33 @@
                 <div class="vocab-grid">
                     <div class="vocab-item">
                         <strong>Surface d'attaque</strong>
-                        <p>Ensemble des points d'entrée potentiels qu'un attaquant peut exploiter : ports ouverts, applications exposées, utilisateurs.</p>
+                        <p>Ensemble des points d'entrée potentiels qu'un attaquant peut exploiter : ports ouverts,
+                            applications exposées, utilisateurs.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>Vulnérabilité</strong>
-                        <p>Faiblesse technique ou organisationnelle pouvant être exploitée. Identifiée par un CVE (Common Vulnerabilities and Exposures).</p>
+                        <p>Faiblesse technique ou organisationnelle pouvant être exploitée. Identifiée par un CVE
+                            (Common Vulnerabilities and Exposures).</p>
                     </div>
                     <div class="vocab-item">
                         <strong>Threat Intelligence (CTI)</strong>
-                        <p>Renseignement sur les menaces : IOC, TTP des attaquants, campagnes en cours. Sources : CERT-FR, MISP, feeds publics.</p>
+                        <p>Renseignement sur les menaces : IOC, TTP des attaquants, campagnes en cours. Sources :
+                            CERT-FR, MISP, feeds publics.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>Zero Trust</strong>
-                        <p>Modèle de sécurité où aucune confiance implicite n'est accordée. Vérification systématique de chaque accès.</p>
+                        <p>Modèle de sécurité où aucune confiance implicite n'est accordée. Vérification systématique de
+                            chaque accès.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>EDR (Endpoint Detection & Response)</strong>
-                        <p>Solution de sécurité avancée sur les postes, détectant les comportements suspects au-delà de l'antivirus classique.</p>
+                        <p>Solution de sécurité avancée sur les postes, détectant les comportements suspects au-delà de
+                            l'antivirus classique.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>SIEM</strong>
-                        <p>Security Information and Event Management : centralisation et corrélation des logs pour détecter les incidents.</p>
+                        <p>Security Information and Event Management : centralisation et corrélation des logs pour
+                            détecter les incidents.</p>
                     </div>
                 </div>
             </section>
@@ -200,57 +452,93 @@
                 <h3>Menaces techniques actuelles</h3>
                 <div class="threat-card">
                     <h4>Rançongiciels sophistiqués</h4>
-                    <p>Les groupes comme Qilin, Akira, LockBit ou Play pratiquent la "double extorsion" : chiffrement + exfiltration des données. Vecteurs : RDP exposé, phishing, vulnérabilités VPN.</p>
+                    <p>Les groupes comme Qilin, Akira, LockBit ou Play pratiquent la "double extorsion" : chiffrement +
+                        exfiltration des données. Vecteurs : RDP exposé, phishing, vulnérabilités VPN.</p>
                     <div class="example">
-                        <strong>Technique :</strong> Exploitation de vulnérabilités sur les VPN (Fortinet, Ivanti), puis mouvement latéral via Cobalt Strike avant déploiement du ransomware. En 2025, 96 groupes actifs recensés (+41% vs 2024).
+                        <strong>Technique :</strong> Exploitation de vulnérabilités sur les VPN (Fortinet, Ivanti), puis
+                        mouvement latéral via Cobalt Strike avant déploiement du ransomware. En 2025, 96 groupes actifs
+                        recensés (+41% vs 2024).
                     </div>
                 </div>
                 <div class="threat-card">
                     <h4>Attaques sur la supply chain</h4>
-                    <p>Compromission via un fournisseur logiciel (mise à jour vérolée) ou un prestataire avec accès privilégié.</p>
+                    <p>Compromission via un fournisseur logiciel (mise à jour vérolée) ou un prestataire avec accès
+                        privilégié.</p>
                     <div class="example">
-                        <strong>Exemples :</strong> SolarWinds (2020), Kaseya (2021), compromission de dépendances npm/PyPI.
+                        <strong>Exemples :</strong> SolarWinds (2020), Kaseya (2021), compromission de dépendances
+                        npm/PyPI.
                     </div>
                 </div>
                 <div class="threat-card">
                     <h4>Compromission d'identifiants</h4>
-                    <p>Credential stuffing, password spraying, achat de credentials sur les marchés dark web. Cible privilégiée : comptes à privilèges.</p>
+                    <p>Credential stuffing, password spraying, achat de credentials sur les marchés dark web. Cible
+                        privilégiée : comptes à privilèges.</p>
                 </div>
             </section>
 
             <section class="section">
                 <h3>Mesures techniques prioritaires</h3>
                 <div class="best-practice">
-                    <strong>1. Patch management rigoureux</strong> - Prioriser les CVE critiques (CVSS >= 9), surveiller les alertes CERT-FR, tester puis déployer sous 72h pour les critiques.
+                    <strong>1. Patch management rigoureux</strong> - Prioriser les CVE critiques (CVSS >= 9), surveiller
+                    les alertes CERT-FR, tester puis déployer sous 72h pour les critiques.
                 </div>
                 <div class="best-practice">
-                    <strong>2. Sauvegardes 3-2-1</strong> - 3 copies, 2 supports différents, 1 hors site. Tester régulièrement la restauration. Sauvegardes hors ligne contre les ransomwares.
+                    <strong>2. Sauvegardes 3-2-1</strong> - 3 copies, 2 supports différents, 1 hors site. Tester
+                    régulièrement la restauration. Sauvegardes hors ligne contre les ransomwares.
                 </div>
                 <div class="best-practice">
-                    <strong>3. Segmentation réseau</strong> - Isoler les environnements critiques, limiter les flux est-ouest, micro-segmentation si possible.
+                    <strong>3. Segmentation réseau</strong> - Isoler les environnements critiques, limiter les flux
+                    est-ouest, micro-segmentation si possible.
                 </div>
                 <div class="best-practice">
-                    <strong>4. Gestion des accès privilégiés (PAM)</strong> - Coffre-fort pour comptes admin, rotation des mots de passe, sessions enregistrées, principe du moindre privilège.
+                    <strong>4. Gestion des accès privilégiés (PAM)</strong> - Coffre-fort pour comptes admin, rotation
+                    des mots de passe, sessions enregistrées, principe du moindre privilège.
                 </div>
                 <div class="best-practice">
-                    <strong>5. Journalisation centralisée</strong> - Collecter les logs (AD, firewall, proxy, endpoints), rétention minimum 1 an, alertes sur comportements anormaux.
+                    <strong>5. Journalisation centralisée</strong> - Collecter les logs (AD, firewall, proxy,
+                    endpoints), rétention minimum 1 an, alertes sur comportements anormaux.
                 </div>
                 <div class="best-practice">
-                    <strong>6. Durcissement des configurations</strong> - CIS Benchmarks, désactivation des services inutiles, GPO de sécurité, LAPS pour les mots de passe admin locaux.
+                    <strong>6. Durcissement des configurations</strong> - CIS Benchmarks, désactivation des services
+                    inutiles, GPO de sécurité, LAPS pour les mots de passe admin locaux.
                 </div>
             </section>
 
             <section class="section">
                 <h3>Checklist technique</h3>
                 <div class="checklist">
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Inventaire à jour de tous les actifs (CMDB)</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>MFA activé sur tous les accès à privilèges et VPN</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>EDR déployé sur tous les endpoints</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Sauvegardes testées dans les 30 derniers jours</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Pas de RDP exposé sur internet</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Politique de mots de passe conforme (12+ caractères)</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Plan de réponse à incident documenté et testé</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Abonnement aux alertes CERT-FR</span></div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Inventaire à jour
+                            de tous les actifs (CMDB)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>MFA activé sur tous
+                            les accès à privilèges et VPN</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>EDR déployé sur
+                            tous les endpoints</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Sauvegardes testées
+                            dans les 30 derniers jours</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Pas de RDP exposé
+                            sur internet</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Politique de mots
+                            de passe conforme (12+ caractères)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Plan de réponse à
+                            incident documenté et testé</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Abonnement aux
+                            alertes CERT-FR</span>
+                    </div>
                 </div>
             </section>
 
@@ -258,10 +546,12 @@
                 <h4>Fiche réflexe : Suspicion de compromission</h4>
                 <ol>
                     <li><strong>Isoler</strong> le ou les systèmes suspects (ne pas éteindre, couper du réseau)</li>
-                    <li><strong>Préserver les preuves</strong> : captures mémoire, logs, ne pas restaurer immédiatement</li>
+                    <li><strong>Préserver les preuves</strong> : captures mémoire, logs, ne pas restaurer immédiatement
+                    </li>
                     <li><strong>Activer la cellule de crise</strong> : IT, direction, juridique, communication</li>
                     <li><strong>Évaluer le périmètre</strong> : quels systèmes, quelles données, quelle durée ?</li>
-                    <li><strong>Notifier</strong> : CNIL sous 72h si données personnelles, direction, assurance cyber</li>
+                    <li><strong>Notifier</strong> : CNIL sous 72h si données personnelles, direction, assurance cyber
+                    </li>
                     <li><strong>Contacter</strong> : CERT-FR si attaque majeure, prestataire de réponse à incident</li>
                 </ol>
             </div>
@@ -274,19 +564,23 @@
                 <div class="vocab-grid">
                     <div class="vocab-item">
                         <strong>Risque cyber</strong>
-                        <p>Combinaison de la probabilité d'une menace et de son impact sur l'activité. S'évalue en termes financiers, opérationnels, réputationnels.</p>
+                        <p>Combinaison de la probabilité d'une menace et de son impact sur l'activité. S'évalue en
+                            termes financiers, opérationnels, réputationnels.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>Résilience</strong>
-                        <p>Capacité de l'organisation à continuer son activité malgré une cyberattaque et à se rétablir rapidement.</p>
+                        <p>Capacité de l'organisation à continuer son activité malgré une cyberattaque et à se rétablir
+                            rapidement.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>PSSI</strong>
-                        <p>Politique de Sécurité des Systèmes d'Information : document stratégique définissant les règles et responsabilités en matière de sécurité.</p>
+                        <p>Politique de Sécurité des Systèmes d'Information : document stratégique définissant les
+                            règles et responsabilités en matière de sécurité.</p>
                     </div>
                     <div class="vocab-item">
                         <strong>PCA / PRA</strong>
-                        <p>Plan de Continuité / Reprise d'Activité : procédures pour maintenir ou rétablir les fonctions critiques après un incident.</p>
+                        <p>Plan de Continuité / Reprise d'Activité : procédures pour maintenir ou rétablir les fonctions
+                            critiques après un incident.</p>
                     </div>
                 </div>
             </section>
@@ -294,11 +588,14 @@
             <section class="section">
                 <h3>Enjeux pour le dirigeant</h3>
                 <div class="warning-box">
-                    <strong>Responsabilité personnelle :</strong> En cas de manquement grave à la sécurité des données, la responsabilité du dirigeant peut être engagée. Le RGPD prévoit des amendes jusqu'à 20M€ ou 4% du CA mondial.
+                    <strong>Responsabilité personnelle :</strong> En cas de manquement grave à la sécurité des données,
+                    la responsabilité du dirigeant peut être engagée. Le RGPD prévoit des amendes jusqu'à 20M€ ou 4% du
+                    CA mondial.
                 </div>
                 <div class="threat-card">
                     <h4>Impact financier d'une cyberattaque</h4>
-                    <p>Coût moyen d'une violation de données : <strong>4,44 M$ (~4,1 M€)</strong> dans le monde (IBM 2025). Pour une PME française : <strong>~466 000 €</strong> en moyenne. Ce montant inclut :</p>
+                    <p>Coût moyen d'une violation de données : <strong>4,44 M$ (~4,1 M€)</strong> dans le monde (IBM
+                        2025). Pour une PME française : <strong>~466 000 €</strong> en moyenne. Ce montant inclut :</p>
                     <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
                         <li>Pertes d'exploitation (arrêt d'activité)</li>
                         <li>Coûts de remédiation technique</li>
@@ -306,7 +603,8 @@
                         <li>Perte de clients et atteinte à la réputation</li>
                         <li>Frais juridiques et communication de crise</li>
                     </ul>
-                    <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>60% des PME victimes ferment dans les 18 mois</strong> suivant une cyberattaque majeure.</p>
+                    <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>60% des PME victimes ferment dans les 18
+                            mois</strong> suivant une cyberattaque majeure.</p>
                 </div>
                 <div class="threat-card">
                     <h4>Exemples d'incidents médiatisés</h4>
@@ -316,7 +614,9 @@
                         <li><strong>Ministère de l'Intérieur (2025)</strong> : serveurs de messagerie compromis</li>
                         <li><strong>5 629 violations notifiées à la CNIL en 2024</strong> (+20% vs 2023)</li>
                     </ul>
-                    <p style="margin-top: 0.75rem; font-size: 0.9rem;">Voir aussi : <a href="https://bonjourlafuite.eu.org/" target="_blank">bonjourlafuite.eu.org</a> - Recensement des fuites de données en France</p>
+                    <p style="margin-top: 0.75rem; font-size: 0.9rem;">Voir aussi : <a
+                            href="https://bonjourlafuite.eu.org/" target="_blank">bonjourlafuite.eu.org</a> -
+                        Recensement des fuites de données en France</p>
                 </div>
             </section>
 
@@ -328,7 +628,8 @@
                         <li>Avons-nous un <strong>plan de réponse à incident</strong> testé ?</li>
                         <li>En combien de temps pouvons-nous <strong>restaurer nos systèmes critiques</strong> ?</li>
                         <li>Quelles sont nos <strong>obligations réglementaires</strong> et sommes-nous conformes ?</li>
-                        <li>Quel est notre <strong>budget sécurité</strong> par rapport aux bonnes pratiques sectorielles ?</li>
+                        <li>Quel est notre <strong>budget sécurité</strong> par rapport aux bonnes pratiques
+                            sectorielles ?</li>
                         <li>Nos <strong>sauvegardes</strong> sont-elles protégées contre les rançongiciels ?</li>
                         <li>Avons-nous une <strong>assurance cyber</strong> adaptée ?</li>
                     </ol>
@@ -338,43 +639,72 @@
             <section class="section">
                 <h3>Décisions stratégiques recommandées</h3>
                 <div class="best-practice">
-                    <strong>1. Nommer un responsable sécurité</strong> - RSSI ou référent sécurité avec accès direct à la direction. La sécurité doit être portée au plus haut niveau.
+                    <strong>1. Nommer un responsable sécurité</strong> - RSSI ou référent sécurité avec accès direct à
+                    la direction. La sécurité doit être portée au plus haut niveau.
                 </div>
                 <div class="best-practice">
-                    <strong>2. Allouer un budget dédié</strong> - Recommandation : 5-10% du budget IT pour la sécurité. C'est un investissement, pas un coût.
+                    <strong>2. Allouer un budget dédié</strong> - Recommandation : 5-10% du budget IT pour la sécurité.
+                    C'est un investissement, pas un coût.
                 </div>
                 <div class="best-practice">
-                    <strong>3. Inclure le cyber dans la gouvernance</strong> - Point régulier en comité de direction, indicateurs de risque suivis au même titre que les KPI business.
+                    <strong>3. Inclure le cyber dans la gouvernance</strong> - Point régulier en comité de direction,
+                    indicateurs de risque suivis au même titre que les KPI business.
                 </div>
                 <div class="best-practice">
-                    <strong>4. Souscrire une assurance cyber</strong> - Couverture des pertes d'exploitation, frais de réponse à incident, responsabilité civile. Vérifier les exclusions.
+                    <strong>4. Souscrire une assurance cyber</strong> - Couverture des pertes d'exploitation, frais de
+                    réponse à incident, responsabilité civile. Vérifier les exclusions.
                 </div>
                 <div class="best-practice">
-                    <strong>5. Tester la résilience</strong> - Exercices de crise cyber annuels impliquant la direction. Simuler un scénario de rançongiciel.
+                    <strong>5. Tester la résilience</strong> - Exercices de crise cyber annuels impliquant la direction.
+                    Simuler un scénario de rançongiciel.
                 </div>
             </section>
 
             <section class="section">
                 <h3>Checklist du dirigeant</h3>
                 <div class="checklist">
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Un responsable sécurité est identifié dans l'organisation</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Le risque cyber est inscrit dans la cartographie des risques de l'entreprise</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Un budget sécurité est défini et suivi</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Les obligations réglementaires sont identifiées (RGPD, NIS2, sectorielles)</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Un plan de continuité d'activité existe et a été testé</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Une assurance cyber est souscrite</span></div>
-                    <div class="checklist-item"><div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Les employés sont sensibilisés régulièrement</span></div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Un responsable
+                            sécurité est identifié dans l'organisation</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Le risque cyber est
+                            inscrit dans la cartographie des risques de l'entreprise</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Un budget sécurité
+                            est défini et suivi</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Les obligations
+                            réglementaires sont identifiées (RGPD, NIS2, sectorielles)</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Un plan de
+                            continuité d'activité existe et a été testé</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Une assurance cyber
+                            est souscrite</span>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="checkbox" onclick="this.classList.toggle('checked')"></div><span>Les employés sont
+                            sensibilisés régulièrement</span>
+                    </div>
                 </div>
             </section>
 
             <div class="fiche-reflexe">
                 <h4>Fiche réflexe : Cyberattaque en cours</h4>
                 <ol>
-                    <li><strong>Activer la cellule de crise</strong> : réunir IT, direction, juridique, communication</li>
-                    <li><strong>Ne pas payer la rançon</strong> : aucune garantie de récupération, finance les criminels</li>
+                    <li><strong>Activer la cellule de crise</strong> : réunir IT, direction, juridique, communication
+                    </li>
+                    <li><strong>Ne pas payer la rançon</strong> : aucune garantie de récupération, finance les criminels
+                    </li>
                     <li><strong>Évaluer l'impact business</strong> : quels services critiques sont touchés ?</li>
                     <li><strong>Communiquer en interne</strong> : informer les collaborateurs sans créer de panique</li>
-                    <li><strong>Préparer la communication externe</strong> : clients, partenaires, médias si nécessaire</li>
+                    <li><strong>Préparer la communication externe</strong> : clients, partenaires, médias si nécessaire
+                    </li>
                     <li><strong>Déclarer l'incident</strong> : CNIL sous 72h, dépôt de plainte, assurance</li>
                     <li><strong>Documenter</strong> : toutes les décisions et actions pour le retour d'expérience</li>
                 </ol>
@@ -384,7 +714,8 @@
 
     <footer>
         <p>CyberGuide - Plateforme d'orientation cybersécurité pour entreprises</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Sources : ANSSI, Cybermalveillance.gouv.fr, CNIL, IBM Cost of Data Breach Report</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Sources : ANSSI, Cybermalveillance.gouv.fr, CNIL, IBM Cost of
+            Data Breach Report</p>
     </footer>
 
     <script>
@@ -404,4 +735,5 @@
         }
     </script>
 </body>
+
 </html>

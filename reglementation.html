@@ -1,52 +1,247 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réglementation - CyberGuide</title>
+    <link rel="icon" href="cyber.png" type="image/png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .nav { background: #1e3a5f; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
-        .nav .logo { height: 50px; }
-        .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
-        .nav a { color: white; text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: #00d4d4; }
-        .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #00d4d4; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .questionnaire { background: #f0fdfd; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #00d4d4; }
-        .questionnaire h2 { color: #0891b2; margin-bottom: 1rem; }
-        .question { margin-bottom: 1.5rem; }
-        .question label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
-        .question select { width: 100%; max-width: 400px; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 5px; font-size: 1rem; }
-        .btn { display: inline-block; background: #00b4b4; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 500; border: none; cursor: pointer; font-size: 1rem; }
-        .btn:hover { background: #0891b2; }
-        .results { display: none; }
-        .results.show { display: block; }
-        .reg-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
-        .reg-header { padding: 1rem 1.5rem; font-weight: 600; color: white; }
-        .reg-header.obligatoire { background: #c53030; }
-        .reg-header.recommande { background: #0891b2; }
-        .reg-header.sectoriel { background: #1e3a5f; }
-        .reg-content { padding: 1.5rem; }
-        .reg-content h4 { color: #0891b2; margin-bottom: 0.5rem; }
-        .reg-content p { margin-bottom: 0.75rem; }
-        .tag { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.85rem; margin-right: 0.5rem; }
-        .tag-red { background: #fed7d7; color: #c53030; }
-        .tag-green { background: #e0f7f7; color: #0891b2; }
-        .tag-blue { background: #e0f7f7; color: #0891b2; }
-        .actions { background: #f0fdfd; padding: 1rem; border-radius: 5px; margin-top: 1rem; }
-        .actions h5 { color: #0891b2; margin-bottom: 0.5rem; }
-        .actions ul { margin-left: 1.5rem; }
-        .section { margin-bottom: 3rem; }
-        .section h2 { color: #1e3a5f; margin-bottom: 1rem; border-bottom: 3px solid #00d4d4; padding-bottom: 0.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        footer { background: #1e3a5f; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-        .source { font-size: 0.85rem; color: #718096; margin-top: 0.5rem; }
-        .source a { color: #00b4b4; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .nav {
+            background: #1e3a5f;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav .logo {
+            height: 100px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #00d4d4;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: #00d4d4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .questionnaire {
+            background: #f0fdfd;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #00d4d4;
+        }
+
+        .questionnaire h2 {
+            color: #0891b2;
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+        }
+
+        .question label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .question select {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #00b4b4;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #0891b2;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .reg-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .reg-header {
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .reg-header.obligatoire {
+            background: #c53030;
+        }
+
+        .reg-header.recommande {
+            background: #0891b2;
+        }
+
+        .reg-header.sectoriel {
+            background: #1e3a5f;
+        }
+
+        .reg-content {
+            padding: 1.5rem;
+        }
+
+        .reg-content h4 {
+            color: #0891b2;
+            margin-bottom: 0.5rem;
+        }
+
+        .reg-content p {
+            margin-bottom: 0.75rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+        }
+
+        .tag-red {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .tag-green {
+            background: #e0f7f7;
+            color: #0891b2;
+        }
+
+        .tag-blue {
+            background: #e0f7f7;
+            color: #0891b2;
+        }
+
+        .actions {
+            background: #f0fdfd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .actions h5 {
+            color: #0891b2;
+            margin-bottom: 0.5rem;
+        }
+
+        .actions ul {
+            margin-left: 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #1e3a5f;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #00d4d4;
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .source {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-top: 0.5rem;
+        }
+
+        .source a {
+            color: #00b4b4;
+        }
     </style>
 </head>
+
 <body>
     <nav class="nav">
         <a href="index.html"><img src="cyber.png" alt="CyberGuide" class="logo"></a>
@@ -68,7 +263,8 @@
     <main class="container">
         <div class="questionnaire">
             <h2>Identifiez vos obligations</h2>
-            <p style="margin-bottom: 1.5rem;">Répondez à ces questions pour découvrir les réglementations qui vous concernent probablement.</p>
+            <p style="margin-bottom: 1.5rem;">Répondez à ces questions pour découvrir les réglementations qui vous
+                concernent probablement.</p>
 
             <div class="question">
                 <label>1. Quel est votre secteur d'activité ?</label>
@@ -130,7 +326,8 @@
                     <div class="reg-content">
                         <h4>Règlement Général sur la Protection des Données</h4>
                         <p><span class="tag tag-red">Obligatoire</span><span class="tag tag-blue">UE</span></p>
-                        <p><strong>Périmètre :</strong> Toute organisation traitant des données personnelles de résidents européens.</p>
+                        <p><strong>Périmètre :</strong> Toute organisation traitant des données personnelles de
+                            résidents européens.</p>
                         <p><strong>Implications :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>Registre des traitements obligatoire</li>
@@ -148,7 +345,8 @@
                                 <li>Sécuriser le stockage des données</li>
                             </ul>
                         </div>
-                        <p class="source">Source : <a href="https://www.cnil.fr/fr/rgpd-de-quoi-parle-t-on" target="_blank">CNIL - RGPD</a></p>
+                        <p class="source">Source : <a href="https://www.cnil.fr/fr/rgpd-de-quoi-parle-t-on"
+                                target="_blank">CNIL - RGPD</a></p>
                     </div>
                 </div>
 
@@ -156,8 +354,10 @@
                     <div class="reg-header obligatoire">NIS2 - Entités essentielles et importantes</div>
                     <div class="reg-content">
                         <h4>Directive Network and Information Security 2</h4>
-                        <p><span class="tag tag-red">Obligatoire selon secteur</span><span class="tag tag-blue">UE</span></p>
-                        <p><strong>Périmètre :</strong> Entités moyennes et grandes dans 18 secteurs critiques (énergie, transport, santé, numérique, eau, administration publique, etc.)</p>
+                        <p><span class="tag tag-red">Obligatoire selon secteur</span><span
+                                class="tag tag-blue">UE</span></p>
+                        <p><strong>Périmètre :</strong> Entités moyennes et grandes dans 18 secteurs critiques (énergie,
+                            transport, santé, numérique, eau, administration publique, etc.)</p>
                         <p><strong>Implications :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>Mesures de gestion des risques cyber</li>
@@ -169,12 +369,14 @@
                         <div class="actions">
                             <h5>Premières actions</h5>
                             <ul>
-                                <li>S'inscrire sur <a href="https://monespacenis2.cyber.gouv.fr" target="_blank">MonEspaceNIS2</a></li>
+                                <li>S'inscrire sur <a href="https://monespacenis2.cyber.gouv.fr"
+                                        target="_blank">MonEspaceNIS2</a></li>
                                 <li>Vérifier si vous êtes concerné (secteur + taille)</li>
                                 <li>Réaliser une analyse de risques</li>
                             </ul>
                         </div>
-                        <p class="source">Source : <a href="https://cyber.gouv.fr/la-directive-nis-2" target="_blank">ANSSI - NIS2</a></p>
+                        <p class="source">Source : <a href="https://cyber.gouv.fr/la-directive-nis-2"
+                                target="_blank">ANSSI - NIS2</a></p>
                     </div>
                 </div>
 
@@ -183,7 +385,8 @@
                     <div class="reg-content">
                         <h4>Loi de Programmation Militaire</h4>
                         <p><span class="tag tag-red">Obligatoire OIV</span><span class="tag tag-blue">France</span></p>
-                        <p><strong>Périmètre :</strong> Opérateurs d'Importance Vitale désignés par l'État (environ 250 organisations).</p>
+                        <p><strong>Périmètre :</strong> Opérateurs d'Importance Vitale désignés par l'État (environ 250
+                            organisations).</p>
                         <p><strong>Implications :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>Systèmes d'Information d'Importance Vitale (SIIV)</li>
@@ -191,7 +394,8 @@
                             <li>Détection d'incidents obligatoire</li>
                             <li>Contrôles de l'ANSSI</li>
                         </ul>
-                        <p class="source">Source : <a href="https://cyber.gouv.fr/directive-lpm" target="_blank">ANSSI - OIV</a></p>
+                        <p class="source">Source : <a href="https://cyber.gouv.fr/directive-lpm" target="_blank">ANSSI -
+                                OIV</a></p>
                     </div>
                 </div>
 
@@ -199,16 +403,20 @@
                     <div class="reg-header sectoriel">HDS 2.0 - Données de santé</div>
                     <div class="reg-content">
                         <h4>Hébergement de Données de Santé</h4>
-                        <p><span class="tag tag-red">Obligatoire santé</span><span class="tag tag-blue">France</span></p>
-                        <p><strong>Périmètre :</strong> Tout hébergeur de données de santé à caractère personnel pour le compte d'un tiers.</p>
+                        <p><span class="tag tag-red">Obligatoire santé</span><span class="tag tag-blue">France</span>
+                        </p>
+                        <p><strong>Périmètre :</strong> Tout hébergeur de données de santé à caractère personnel pour le
+                            compte d'un tiers.</p>
                         <p><strong>Implications :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>Certification HDS 2.0 obligatoire pour l'hébergeur</li>
                             <li>Localisation des données en Europe</li>
                             <li>Alignement sur ISO 27001:2022</li>
                         </ul>
-                        <p><strong>Échéance :</strong> Conformité HDS 2.0 obligatoire avant le <strong>16 mai 2026</strong></p>
-                        <p class="source">Source : <a href="https://esante.gouv.fr/produits-services/hds" target="_blank">ANS - HDS</a></p>
+                        <p><strong>Échéance :</strong> Conformité HDS 2.0 obligatoire avant le <strong>16 mai
+                                2026</strong></p>
+                        <p class="source">Source : <a href="https://esante.gouv.fr/produits-services/hds"
+                                target="_blank">ANS - HDS</a></p>
                     </div>
                 </div>
 
@@ -216,8 +424,10 @@
                     <div class="reg-header sectoriel">PCI-DSS 4.0 - Paiements</div>
                     <div class="reg-content">
                         <h4>Payment Card Industry Data Security Standard</h4>
-                        <p><span class="tag tag-red">Obligatoire CB</span><span class="tag tag-blue">International</span></p>
-                        <p><strong>Périmètre :</strong> Toute organisation qui stocke, traite ou transmet des données de carte bancaire.</p>
+                        <p><span class="tag tag-red">Obligatoire CB</span><span
+                                class="tag tag-blue">International</span></p>
+                        <p><strong>Périmètre :</strong> Toute organisation qui stocke, traite ou transmet des données de
+                            carte bancaire.</p>
                         <p><strong>Implications (v4.0) :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>12 exigences + nouvelles exigences côté client (scripts)</li>
@@ -226,7 +436,8 @@
                             <li>Scans ASV trimestriels obligatoires</li>
                         </ul>
                         <p><strong>Échéance :</strong> Version 4.0 obligatoire depuis <strong>mars 2025</strong></p>
-                        <p class="source">Source : <a href="https://www.pcisecuritystandards.org/" target="_blank">PCI Security Standards Council</a></p>
+                        <p class="source">Source : <a href="https://www.pcisecuritystandards.org/" target="_blank">PCI
+                                Security Standards Council</a></p>
                     </div>
                 </div>
 
@@ -234,8 +445,10 @@
                     <div class="reg-header recommande">ISO 27001:2022 - Recommandé</div>
                     <div class="reg-content">
                         <h4>Système de Management de la Sécurité de l'Information</h4>
-                        <p><span class="tag tag-green">Volontaire</span><span class="tag tag-blue">International</span></p>
-                        <p><strong>Périmètre :</strong> Toute organisation souhaitant structurer sa démarche de sécurité.</p>
+                        <p><span class="tag tag-green">Volontaire</span><span class="tag tag-blue">International</span>
+                        </p>
+                        <p><strong>Périmètre :</strong> Toute organisation souhaitant structurer sa démarche de
+                            sécurité.</p>
                         <p><strong>Bénéfices :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>Cadre reconnu internationalement</li>
@@ -243,7 +456,8 @@
                             <li>Amélioration continue</li>
                             <li>Facilite la conformité NIS2, HDS, DORA</li>
                         </ul>
-                        <p><strong>Note :</strong> Version 2022 obligatoire depuis octobre 2025 (fin de la version 2013)</p>
+                        <p><strong>Note :</strong> Version 2022 obligatoire depuis octobre 2025 (fin de la version 2013)
+                        </p>
                         <div class="actions">
                             <h5>Premières actions</h5>
                             <ul>
@@ -260,7 +474,8 @@
                     <div class="reg-content">
                         <h4>Digital Operational Resilience Act</h4>
                         <p><span class="tag tag-red">Obligatoire finance</span><span class="tag tag-blue">UE</span></p>
-                        <p><strong>Périmètre :</strong> Établissements financiers, assureurs, prestataires de services de paiement, fournisseurs TIC critiques.</p>
+                        <p><strong>Périmètre :</strong> Établissements financiers, assureurs, prestataires de services
+                            de paiement, fournisseurs TIC critiques.</p>
                         <p><strong>Implications :</strong></p>
                         <ul style="margin-left: 1.5rem; margin-bottom: 0.75rem;">
                             <li>Tests de résilience opérationnelle</li>
@@ -269,7 +484,9 @@
                             <li>Partage d'informations sur les menaces</li>
                         </ul>
                         <p><strong>Échéance :</strong> Applicable depuis janvier 2025</p>
-                        <p class="source">Source : <a href="https://www.eba.europa.eu/regulation-and-policy/operational-resilience" target="_blank">EBA - DORA</a></p>
+                        <p class="source">Source : <a
+                                href="https://www.eba.europa.eu/regulation-and-policy/operational-resilience"
+                                target="_blank">EBA - DORA</a></p>
                     </div>
                 </div>
 
@@ -286,7 +503,9 @@
                             <li>Gratuit et en français</li>
                             <li>Base pour une démarche de conformité</li>
                         </ul>
-                        <p class="source">Source : <a href="https://cyber.gouv.fr/publications/guide-dhygiene-informatique" target="_blank">ANSSI - Guide d'hygiène</a></p>
+                        <p class="source">Source : <a
+                                href="https://cyber.gouv.fr/publications/guide-dhygiene-informatique"
+                                target="_blank">ANSSI - Guide d'hygiène</a></p>
                     </div>
                 </div>
             </div>
@@ -422,4 +641,5 @@
         }
     </script>
 </body>
+
 </html>
