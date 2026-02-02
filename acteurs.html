@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acteurs & Outils - CyberGuide</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
+        .nav { background: #1a365d; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
+        .nav a { color: white; text-decoration: none; font-weight: 500; }
+        .nav a:hover { color: #63b3ed; }
+        .header { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .section { margin-bottom: 3rem; }
+        .section h2 { color: #1a365d; margin-bottom: 1rem; border-bottom: 3px solid #3182ce; padding-bottom: 0.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; }
+        .card h3 { color: #2c5282; margin-bottom: 0.5rem; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+        .tag { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem; }
+        .tag-urgence { background: #fed7d7; color: #c53030; }
+        .tag-prevention { background: #c6f6d5; color: #276749; }
+        .tag-conformite { background: #bee3f8; color: #2b6cb0; }
+        .tag-gratuit { background: #faf5ff; color: #6b46c1; }
+        .card a { color: #3182ce; }
+        .card ul { margin-left: 1.2rem; margin-top: 0.5rem; }
+        .situation-box { background: #ebf8ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+        .situation-box h3 { color: #2c5282; margin-bottom: 1rem; }
+        .situation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .situation-item { background: white; padding: 1rem; border-radius: 5px; border-left: 4px solid #3182ce; }
+        .situation-item h4 { color: #c53030; margin-bottom: 0.5rem; }
+        .tool-category { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
+        .tool-category-header { background: #2c5282; color: white; padding: 1rem 1.5rem; }
+        .tool-category-header h3 { margin: 0; }
+        .tool-category-content { padding: 1.5rem; }
+        .tool-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .tool-item { background: white; padding: 1rem; border-radius: 5px; border: 1px solid #e2e8f0; }
+        .tool-item strong { color: #2c5282; }
+        .tool-item .vendor { font-size: 0.85rem; color: #718096; }
+        footer { background: #1a365d; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+        .prestataire-type { font-size: 0.85rem; color: #718096; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="secteurs.html">Secteurs</a></li>
+            <li><a href="sensibilisation.html">Sensibilisation</a></li>
+            <li><a href="reglementation.html">Réglementation</a></li>
+            <li><a href="acteurs.html">Acteurs & Outils</a></li>
+            <li><a href="quiz.html">Auto-diagnostic</a></li>
+        </ul>
+    </nav>
+
+    <header class="header">
+        <h1>Acteurs, Prestataires & Outils</h1>
+        <p>Qui contacter et quoi utiliser selon votre situation</p>
+    </header>
+
+    <main class="container">
+        <!-- QUI CONTACTER SELON LA SITUATION -->
+        <div class="situation-box">
+            <h3>Qui contacter selon votre situation ?</h3>
+            <div class="situation-grid">
+                <div class="situation-item">
+                    <h4>Attaque en cours / Urgence</h4>
+                    <ol style="margin-left: 1.2rem;">
+                        <li><strong>CERT-FR</strong> (incidents majeurs)</li>
+                        <li><strong>Prestataire réponse à incident</strong></li>
+                        <li><strong>Cybermalveillance.gouv.fr</strong> (PME)</li>
+                        <li><strong>Dépôt de plainte</strong> (Police/Gendarmerie)</li>
+                    </ol>
+                </div>
+                <div class="situation-item">
+                    <h4>Prévention / Amélioration</h4>
+                    <ol style="margin-left: 1.2rem;">
+                        <li><strong>ANSSI</strong> (guides, recommandations)</li>
+                        <li><strong>Audit de sécurité</strong> (prestataire)</li>
+                        <li><strong>Sensibilisation</strong> (prestataire)</li>
+                        <li><strong>MSSP/SOC</strong> (supervision continue)</li>
+                    </ol>
+                </div>
+                <div class="situation-item">
+                    <h4>Conformité réglementaire</h4>
+                    <ol style="margin-left: 1.2rem;">
+                        <li><strong>CNIL</strong> (RGPD, données personnelles)</li>
+                        <li><strong>ANSSI</strong> (NIS2, LPM)</li>
+                        <li><strong>Cabinet conseil GRC</strong></li>
+                        <li><strong>Auditeur certifié</strong> (ISO 27001)</li>
+                    </ol>
+                </div>
+                <div class="situation-item">
+                    <h4>Incident données personnelles</h4>
+                    <ol style="margin-left: 1.2rem;">
+                        <li><strong>CNIL</strong> (notification sous 72h)</li>
+                        <li><strong>DPO</strong> (interne ou externe)</li>
+                        <li><strong>Communication de crise</strong></li>
+                        <li><strong>Assurance cyber</strong></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTEURS ÉTATIQUES -->
+        <section class="section">
+            <h2>Acteurs étatiques et ressources publiques</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>ANSSI</h3>
+                        <span class="tag tag-gratuit">Gratuit</span>
+                    </div>
+                    <p class="prestataire-type">Agence Nationale de la Sécurité des Systèmes d'Information</p>
+                    <p>Autorité nationale en matière de cybersécurité. Référent pour les OIV, OSE et bientôt NIS2.</p>
+                    <ul>
+                        <li>Guides et recommandations</li>
+                        <li>Alertes de sécurité</li>
+                        <li>Accompagnement des grandes organisations</li>
+                        <li>Qualification des prestataires (PASSI, PRIS)</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.ssi.gouv.fr" target="_blank">www.ssi.gouv.fr</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>CERT-FR</h3>
+                        <span class="tag tag-urgence">Urgence</span>
+                    </div>
+                    <p class="prestataire-type">Centre gouvernemental de veille, d'alerte et de réponse aux attaques</p>
+                    <p>Point de contact en cas d'incident de sécurité majeur. Publie les alertes et avis de sécurité.</p>
+                    <ul>
+                        <li>Alertes de sécurité (CVE critiques)</li>
+                        <li>Assistance en cas d'incident majeur</li>
+                        <li>Bulletins d'actualité</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.cert.ssi.gouv.fr" target="_blank">www.cert.ssi.gouv.fr</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Cybermalveillance.gouv.fr</h3>
+                        <span class="tag tag-gratuit">Gratuit</span>
+                    </div>
+                    <p class="prestataire-type">Dispositif national d'assistance aux victimes</p>
+                    <p>Plateforme d'aide pour les particuliers, TPE/PME et collectivités victimes de cybermalveillance.</p>
+                    <ul>
+                        <li>Diagnostic en ligne gratuit</li>
+                        <li>Mise en relation avec des prestataires</li>
+                        <li>Fiches réflexes et guides pratiques</li>
+                        <li>Sensibilisation grand public</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.cybermalveillance.gouv.fr" target="_blank">www.cybermalveillance.gouv.fr</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>CNIL</h3>
+                        <span class="tag tag-conformite">Conformité</span>
+                    </div>
+                    <p class="prestataire-type">Commission Nationale de l'Informatique et des Libertés</p>
+                    <p>Autorité de protection des données personnelles. Régulateur RGPD en France.</p>
+                    <ul>
+                        <li>Notification des violations de données</li>
+                        <li>Guides de conformité RGPD</li>
+                        <li>Outils d'auto-évaluation</li>
+                        <li>Sanctions et contrôles</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.cnil.fr" target="_blank">www.cnil.fr</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Gendarmerie / Police</h3>
+                        <span class="tag tag-urgence">Dépôt plainte</span>
+                    </div>
+                    <p class="prestataire-type">Forces de l'ordre spécialisées cyber</p>
+                    <p>Dépôt de plainte obligatoire en cas de cyberattaque pour les assurances et la poursuite des auteurs.</p>
+                    <ul>
+                        <li><strong>C3N</strong> (Gendarmerie nationale)</li>
+                        <li><strong>OCLCTIC</strong> (Police nationale)</li>
+                        <li>Pré-plainte en ligne possible</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.pre-plainte-en-ligne.gouv.fr" target="_blank">Pré-plainte en ligne</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>ENISA</h3>
+                        <span class="tag tag-gratuit">EU</span>
+                    </div>
+                    <p class="prestataire-type">Agence de l'Union européenne pour la cybersécurité</p>
+                    <p>Ressources européennes, rapports sur les menaces, coordination entre États membres.</p>
+                    <ul>
+                        <li>Threat Landscape annuel</li>
+                        <li>Guides sectoriels</li>
+                        <li>Coordination NIS2</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.enisa.europa.eu" target="_blank">www.enisa.europa.eu</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESTATAIRES -->
+        <section class="section">
+            <h2>Types de prestataires spécialisés</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>MSSP / SOC externalisé</h3>
+                        <span class="tag tag-prevention">Supervision</span>
+                    </div>
+                    <p class="prestataire-type">Managed Security Service Provider</p>
+                    <p>Supervision continue de votre sécurité 24/7, détection et réponse aux incidents.</p>
+                    <ul>
+                        <li><strong>Orange Cyberdefense</strong></li>
+                        <li><strong>Thales</strong></li>
+                        <li><strong>Advens</strong></li>
+                        <li><strong>I-TRACING</strong></li>
+                        <li><strong>Sekoia.io</strong></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Réponse à incident (PRIS)</h3>
+                        <span class="tag tag-urgence">Urgence</span>
+                    </div>
+                    <p class="prestataire-type">Prestataires qualifiés ANSSI en réponse aux incidents</p>
+                    <p>Intervention rapide en cas de cyberattaque, analyse forensique, remédiation.</p>
+                    <ul>
+                        <li><strong>Wavestone</strong></li>
+                        <li><strong>Orange Cyberdefense</strong></li>
+                        <li><strong>Intrinsec</strong></li>
+                        <li><strong>XMCO</strong></li>
+                        <li><strong>Lexfo</strong></li>
+                    </ul>
+                    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="https://www.ssi.gouv.fr/entreprise/qualifications/prestataires-de-services-de-confiance-qualifies/prestataires-de-reponse-aux-incidents-de-securite-pris/" target="_blank">Liste PRIS ANSSI</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Audit / Pentest (PASSI)</h3>
+                        <span class="tag tag-prevention">Évaluation</span>
+                    </div>
+                    <p class="prestataire-type">Prestataires d'Audit de la Sécurité des SI qualifiés ANSSI</p>
+                    <p>Tests d'intrusion, audits de configuration, évaluation de la sécurité.</p>
+                    <ul>
+                        <li><strong>Synacktiv</strong></li>
+                        <li><strong>Quarkslab</strong></li>
+                        <li><strong>Wavestone</strong></li>
+                        <li><strong>Devoteam</strong></li>
+                        <li><strong>Capgemini</strong></li>
+                    </ul>
+                    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="https://www.ssi.gouv.fr/entreprise/qualifications/prestataires-de-services-de-confiance-qualifies/prestataires-daudit-de-la-securite-des-systemes-dinformation-passi/" target="_blank">Liste PASSI ANSSI</a></p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Sensibilisation</h3>
+                        <span class="tag tag-prevention">Formation</span>
+                    </div>
+                    <p class="prestataire-type">Programmes de sensibilisation et simulation de phishing</p>
+                    <p>Formation des collaborateurs, campagnes de phishing simulé, e-learning.</p>
+                    <ul>
+                        <li><strong>Conscio Technologies</strong></li>
+                        <li><strong>Mailinblack (Phishing Coach)</strong></li>
+                        <li><strong>Knowbe4</strong></li>
+                        <li><strong>Cofense</strong></li>
+                        <li><strong>Avant de Cliquer</strong></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Conseil GRC</h3>
+                        <span class="tag tag-conformite">Conformité</span>
+                    </div>
+                    <p class="prestataire-type">Gouvernance, Risques et Conformité</p>
+                    <p>Accompagnement RGPD, ISO 27001, NIS2, mise en conformité réglementaire.</p>
+                    <ul>
+                        <li><strong>Wavestone</strong></li>
+                        <li><strong>EY</strong></li>
+                        <li><strong>PwC</strong></li>
+                        <li><strong>KPMG</strong></li>
+                        <li><strong>TNP Consultants</strong></li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Intégrateur / Infogérant</h3>
+                        <span class="tag tag-prevention">Déploiement</span>
+                    </div>
+                    <p class="prestataire-type">Déploiement et gestion des solutions de sécurité</p>
+                    <p>Installation, configuration et maintenance des outils de sécurité.</p>
+                    <ul>
+                        <li><strong>SCC</strong></li>
+                        <li><strong>Nomios</strong></li>
+                        <li><strong>SNS Security</strong></li>
+                        <li><strong>Approach</strong></li>
+                        <li><strong>Synetis</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATÉGORIES D'OUTILS -->
+        <section class="section">
+            <h2>Catégories d'outils de sécurité</h2>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>EDR / XDR - Détection sur les endpoints</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Solutions de détection et réponse sur les postes de travail et serveurs. Vont au-delà de l'antivirus classique.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>CrowdStrike Falcon</strong>
+                            <p class="vendor">CrowdStrike (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Microsoft Defender for Endpoint</strong>
+                            <p class="vendor">Microsoft (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>SentinelOne</strong>
+                            <p class="vendor">SentinelOne (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>HarfangLab</strong>
+                            <p class="vendor">HarfangLab (FR) - Qualifié ANSSI</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Tehtris XDR</strong>
+                            <p class="vendor">Tehtris (FR)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>IAM / PAM - Gestion des identités et accès</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Gestion des identités (IAM) et des accès à privilèges (PAM). Contrôle qui accède à quoi.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>Microsoft Entra ID</strong>
+                            <p class="vendor">Microsoft (ex-Azure AD)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>CyberArk</strong>
+                            <p class="vendor">CyberArk (IL) - Leader PAM</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Okta</strong>
+                            <p class="vendor">Okta (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Wallix</strong>
+                            <p class="vendor">Wallix (FR) - PAM</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>BeyondTrust</strong>
+                            <p class="vendor">BeyondTrust (US)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>Sauvegarde et reprise d'activité</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Solutions de backup avec protection contre les ransomwares et capacité de restauration rapide.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>Veeam</strong>
+                            <p class="vendor">Veeam (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Rubrik</strong>
+                            <p class="vendor">Rubrik (US) - Zero Trust Data Security</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Commvault</strong>
+                            <p class="vendor">Commvault (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Acronis</strong>
+                            <p class="vendor">Acronis (CH)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>Scan de vulnérabilités</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Identification des failles de sécurité sur vos systèmes, applications et réseaux.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>Tenable (Nessus)</strong>
+                            <p class="vendor">Tenable (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Qualys</strong>
+                            <p class="vendor">Qualys (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Rapid7 InsightVM</strong>
+                            <p class="vendor">Rapid7 (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>OpenVAS</strong>
+                            <p class="vendor">Greenbone (DE) - Open source</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>SIEM - Centralisation des logs</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Collecte, corrélation et analyse des événements de sécurité pour détecter les incidents.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>Splunk</strong>
+                            <p class="vendor">Cisco/Splunk (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Microsoft Sentinel</strong>
+                            <p class="vendor">Microsoft (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Elastic Security</strong>
+                            <p class="vendor">Elastic (NL) - Open source core</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Sekoia.io</strong>
+                            <p class="vendor">Sekoia (FR)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>Firewall / UTM</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Protection périmétrique, filtrage réseau, VPN, inspection du trafic.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>Palo Alto Networks</strong>
+                            <p class="vendor">Palo Alto (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Fortinet FortiGate</strong>
+                            <p class="vendor">Fortinet (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Stormshield</strong>
+                            <p class="vendor">Stormshield (FR) - Qualifié ANSSI</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Cisco Firepower</strong>
+                            <p class="vendor">Cisco (US)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tool-category">
+                <div class="tool-category-header">
+                    <h3>Protection email / Anti-spam</h3>
+                </div>
+                <div class="tool-category-content">
+                    <p>Filtrage des emails malveillants, protection contre le phishing et les pièces jointes dangereuses.</p>
+                    <div class="tool-list">
+                        <div class="tool-item">
+                            <strong>Proofpoint</strong>
+                            <p class="vendor">Proofpoint (US)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Mimecast</strong>
+                            <p class="vendor">Mimecast (UK)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Mailinblack</strong>
+                            <p class="vendor">Mailinblack (FR)</p>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Vade</strong>
+                            <p class="vendor">Vade (FR)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>CyberGuide - Plateforme d'orientation cybersécurité pour entreprises</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Sources : ANSSI, Gartner, sites éditeurs officiels</p>
+    </footer>
+</body>
+</html>
