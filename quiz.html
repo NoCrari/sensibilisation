@@ -1,61 +1,327 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto-diagnostic - CyberGuide</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .nav { background: #1a365d; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
-        .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
-        .nav a { color: white; text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: #63b3ed; }
-        .header { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
-        .progress-bar { background: #e2e8f0; height: 8px; border-radius: 4px; margin-bottom: 2rem; }
-        .progress-fill { background: #3182ce; height: 100%; border-radius: 4px; transition: width 0.3s; }
-        .question-container { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; }
-        .question-number { color: #718096; font-size: 0.9rem; margin-bottom: 0.5rem; }
-        .question-text { font-size: 1.2rem; font-weight: 600; color: #1a365d; margin-bottom: 1.5rem; }
-        .options { display: flex; flex-direction: column; gap: 0.75rem; }
-        .option { padding: 1rem; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .option:hover { border-color: #3182ce; background: #ebf8ff; }
-        .option.selected { border-color: #3182ce; background: #bee3f8; }
-        .btn { display: inline-block; background: #3182ce; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 500; border: none; cursor: pointer; font-size: 1rem; }
-        .btn:hover { background: #2c5282; }
-        .btn:disabled { background: #a0aec0; cursor: not-allowed; }
-        .btn-secondary { background: #718096; }
-        .navigation { display: flex; justify-content: space-between; margin-top: 1.5rem; }
-        .results { display: none; }
-        .results.show { display: block; }
-        .score-card { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 2rem; border-radius: 8px; text-align: center; margin-bottom: 2rem; }
-        .score-number { font-size: 4rem; font-weight: bold; }
-        .score-label { font-size: 1.2rem; margin-top: 0.5rem; }
-        .level-badge { display: inline-block; padding: 0.5rem 1rem; border-radius: 20px; font-weight: 600; margin-top: 1rem; }
-        .level-debutant { background: #fed7d7; color: #c53030; }
-        .level-intermediaire { background: #feebc8; color: #c05621; }
-        .level-avance { background: #c6f6d5; color: #276749; }
-        .recommendations { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
-        .recommendations h3 { color: #2c5282; margin-bottom: 1rem; }
-        .reco-item { display: flex; gap: 1rem; padding: 1rem; background: white; border-radius: 5px; margin-bottom: 0.75rem; border-left: 4px solid #3182ce; }
-        .reco-priority { font-weight: bold; color: #c53030; min-width: 30px; }
-        .reco-priority.medium { color: #c05621; }
-        .reco-priority.low { color: #276749; }
-        .trajectory { background: #ebf8ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; }
-        .trajectory h3 { color: #2c5282; margin-bottom: 1rem; }
-        .trajectory-step { display: flex; gap: 1rem; margin-bottom: 1rem; }
-        .step-number { width: 30px; height: 30px; background: #3182ce; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; }
-        .links-section { margin-top: 2rem; }
-        .links-section h3 { color: #2c5282; margin-bottom: 1rem; }
-        .link-card { display: block; padding: 1rem; background: white; border: 1px solid #e2e8f0; border-radius: 5px; margin-bottom: 0.75rem; text-decoration: none; color: #333; transition: all 0.2s; }
-        .link-card:hover { border-color: #3182ce; background: #ebf8ff; }
-        .link-card strong { color: #2c5282; }
-        footer { background: #1a365d; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-        .hidden { display: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .nav {
+            background: #1a365d;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #63b3ed;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+        }
+
+        .progress-fill {
+            background: #3182ce;
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .question-container {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .question-number {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .option {
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: #3182ce;
+            background: #ebf8ff;
+        }
+
+        .option.selected {
+            border-color: #3182ce;
+            background: #bee3f8;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #3182ce;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #2c5282;
+        }
+
+        .btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #718096;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .result-image {
+            max-width: 200px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .level-debutant {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .level-intermediaire {
+            background: #feebc8;
+            color: #c05621;
+        }
+
+        .level-avance {
+            background: #c6f6d5;
+            color: #276749;
+        }
+
+        .recommendations {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .recommendations h3 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+
+        .reco-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 5px;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #3182ce;
+        }
+
+        .reco-priority {
+            font-weight: bold;
+            color: #c53030;
+            min-width: 30px;
+        }
+
+        .reco-priority.medium {
+            color: #c05621;
+        }
+
+        .reco-priority.low {
+            color: #276749;
+        }
+
+        .trajectory {
+            background: #ebf8ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .trajectory h3 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+
+        .trajectory-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            background: #3182ce;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .links-section {
+            margin-top: 2rem;
+        }
+
+        .links-section h3 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+
+        .link-card {
+            display: block;
+            padding: 1rem;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            margin-bottom: 0.75rem;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.2s;
+        }
+
+        .link-card:hover {
+            border-color: #3182ce;
+            background: #ebf8ff;
+        }
+
+        .link-card strong {
+            color: #2c5282;
+        }
+
+        footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <nav class="nav">
         <ul>
@@ -89,6 +355,7 @@
 
         <div id="results-section" class="results">
             <div class="score-card">
+                <img id="result-image" class="result-image" src="" alt="Résultat">
                 <div class="score-number" id="score">0</div>
                 <div class="score-label">points sur 100</div>
                 <div class="level-badge" id="level-badge">Niveau</div>
@@ -295,19 +562,26 @@
             document.getElementById('score').textContent = totalScore;
 
             const levelBadge = document.getElementById('level-badge');
-            let level, levelClass;
+            const resultImage = document.getElementById('result-image');
+            let level, levelClass, imageSrc;
             if (totalScore >= 70) {
                 level = 'Niveau Avancé';
                 levelClass = 'level-avance';
+                imageSrc = 'bravissimo-724306c678.jpg';
             } else if (totalScore >= 40) {
                 level = 'Niveau Intermédiaire';
                 levelClass = 'level-intermediaire';
+                imageSrc = 'be-careful-c686ad1f3f.jpg';
             } else {
                 level = 'Niveau Débutant';
                 levelClass = 'level-debutant';
+                imageSrc = 'ouch-d9c636c614.jpg';
             }
             levelBadge.textContent = level;
             levelBadge.className = 'level-badge ' + levelClass;
+            resultImage.src = imageSrc;
+            resultImage.alt = level;
+            resultImage.style.display = 'inline-block';
 
             // Générer les recommandations
             const recoList = document.getElementById('recommendations-list');
@@ -393,4 +667,5 @@
         renderQuestion();
     </script>
 </body>
+
 </html>
