@@ -1,49 +1,228 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acteurs & Outils - CyberGuide</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .nav { background: #1a365d; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
-        .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
-        .nav a { color: white; text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: #63b3ed; }
-        .header { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .section { margin-bottom: 3rem; }
-        .section h2 { color: #1a365d; margin-bottom: 1rem; border-bottom: 3px solid #3182ce; padding-bottom: 0.5rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; }
-        .card h3 { color: #2c5282; margin-bottom: 0.5rem; }
-        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
-        .tag { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 3px; font-size: 0.8rem; }
-        .tag-urgence { background: #fed7d7; color: #c53030; }
-        .tag-prevention { background: #c6f6d5; color: #276749; }
-        .tag-conformite { background: #bee3f8; color: #2b6cb0; }
-        .tag-gratuit { background: #faf5ff; color: #6b46c1; }
-        .card a { color: #3182ce; }
-        .card ul { margin-left: 1.2rem; margin-top: 0.5rem; }
-        .situation-box { background: #ebf8ff; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
-        .situation-box h3 { color: #2c5282; margin-bottom: 1rem; }
-        .situation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-        .situation-item { background: white; padding: 1rem; border-radius: 5px; border-left: 4px solid #3182ce; }
-        .situation-item h4 { color: #c53030; margin-bottom: 0.5rem; }
-        .tool-category { background: #f7fafc; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
-        .tool-category-header { background: #2c5282; color: white; padding: 1rem 1.5rem; }
-        .tool-category-header h3 { margin: 0; }
-        .tool-category-content { padding: 1.5rem; }
-        .tool-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-        .tool-item { background: white; padding: 1rem; border-radius: 5px; border: 1px solid #e2e8f0; }
-        .tool-item strong { color: #2c5282; }
-        .tool-item .vendor { font-size: 0.85rem; color: #718096; }
-        footer { background: #1a365d; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-        .prestataire-type { font-size: 0.85rem; color: #718096; margin-bottom: 0.5rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .nav {
+            background: #1a365d;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .nav a:hover {
+            color: #63b3ed;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #3182ce;
+            padding-bottom: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: #2c5282;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+        }
+
+        .tag-urgence {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .tag-prevention {
+            background: #c6f6d5;
+            color: #276749;
+        }
+
+        .tag-conformite {
+            background: #bee3f8;
+            color: #2b6cb0;
+        }
+
+        .tag-gratuit {
+            background: #faf5ff;
+            color: #6b46c1;
+        }
+
+        .card a {
+            color: #3182ce;
+        }
+
+        .card ul {
+            margin-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .situation-box {
+            background: #ebf8ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .situation-box h3 {
+            color: #2c5282;
+            margin-bottom: 1rem;
+        }
+
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .situation-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #3182ce;
+        }
+
+        .situation-item h4 {
+            color: #c53030;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-category {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .tool-category-header {
+            background: #2c5282;
+            color: white;
+            padding: 1rem 1.5rem;
+        }
+
+        .tool-category-header h3 {
+            margin: 0;
+        }
+
+        .tool-category-content {
+            padding: 1.5rem;
+        }
+
+        .tool-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .tool-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tool-item strong {
+            color: #2c5282;
+        }
+
+        .tool-item .vendor {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+
+        footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .prestataire-type {
+            font-size: 0.85rem;
+            color: #718096;
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
+
 <body>
     <nav class="nav">
         <ul>
@@ -122,7 +301,8 @@
                         <li>Accompagnement des grandes organisations</li>
                         <li>Qualification des prestataires (PASSI, PRIS)</li>
                     </ul>
-                    <p style="margin-top: 0.75rem;"><a href="https://www.ssi.gouv.fr" target="_blank">www.ssi.gouv.fr</a></p>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.ssi.gouv.fr"
+                            target="_blank">www.ssi.gouv.fr</a></p>
                 </div>
 
                 <div class="card">
@@ -131,13 +311,15 @@
                         <span class="tag tag-urgence">Urgence</span>
                     </div>
                     <p class="prestataire-type">Centre gouvernemental de veille, d'alerte et de réponse aux attaques</p>
-                    <p>Point de contact en cas d'incident de sécurité majeur. Publie les alertes et avis de sécurité.</p>
+                    <p>Point de contact en cas d'incident de sécurité majeur. Publie les alertes et avis de sécurité.
+                    </p>
                     <ul>
                         <li>Alertes de sécurité (CVE critiques)</li>
                         <li>Assistance en cas d'incident majeur</li>
                         <li>Bulletins d'actualité</li>
                     </ul>
-                    <p style="margin-top: 0.75rem;"><a href="https://www.cert.ssi.gouv.fr" target="_blank">www.cert.ssi.gouv.fr</a></p>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.cert.ssi.gouv.fr"
+                            target="_blank">www.cert.ssi.gouv.fr</a></p>
                 </div>
 
                 <div class="card">
@@ -146,14 +328,16 @@
                         <span class="tag tag-gratuit">Gratuit</span>
                     </div>
                     <p class="prestataire-type">Dispositif national d'assistance aux victimes</p>
-                    <p>Plateforme d'aide pour les particuliers, TPE/PME et collectivités victimes de cybermalveillance.</p>
+                    <p>Plateforme d'aide pour les particuliers, TPE/PME et collectivités victimes de cybermalveillance.
+                    </p>
                     <ul>
                         <li>Diagnostic en ligne gratuit</li>
                         <li>Mise en relation avec des prestataires</li>
                         <li>Fiches réflexes et guides pratiques</li>
                         <li>Sensibilisation grand public</li>
                     </ul>
-                    <p style="margin-top: 0.75rem;"><a href="https://www.cybermalveillance.gouv.fr" target="_blank">www.cybermalveillance.gouv.fr</a></p>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.cybermalveillance.gouv.fr"
+                            target="_blank">www.cybermalveillance.gouv.fr</a></p>
                 </div>
 
                 <div class="card">
@@ -178,13 +362,14 @@
                         <span class="tag tag-urgence">Dépôt plainte</span>
                     </div>
                     <p class="prestataire-type">Forces de l'ordre spécialisées cyber</p>
-                    <p>Dépôt de plainte obligatoire en cas de cyberattaque pour les assurances et la poursuite des auteurs.</p>
+                    <p>Dépôt de plainte obligatoire en cas de cyberattaque pour les assurances et la poursuite des
+                        auteurs.</p>
                     <ul>
                         <li><strong>C3N</strong> (Gendarmerie nationale)</li>
                         <li><strong>OCLCTIC</strong> (Police nationale)</li>
                         <li>Pré-plainte en ligne possible</li>
                     </ul>
-                    <p style="margin-top: 0.75rem;"><a href="https://www.pre-plainte-en-ligne.gouv.fr" target="_blank">Pré-plainte en ligne</a></p>
+                    <p style="margin-top: 0.75rem;"><a href="https://17cyber.gouv.fr" target="_blank">17cyber</a></p>
                 </div>
 
                 <div class="card">
@@ -199,7 +384,8 @@
                         <li>Guides sectoriels</li>
                         <li>Coordination NIS2</li>
                     </ul>
-                    <p style="margin-top: 0.75rem;"><a href="https://www.enisa.europa.eu" target="_blank">www.enisa.europa.eu</a></p>
+                    <p style="margin-top: 0.75rem;"><a href="https://www.enisa.europa.eu"
+                            target="_blank">www.enisa.europa.eu</a></p>
                 </div>
             </div>
         </section>
@@ -238,7 +424,9 @@
                         <li><strong>XMCO</strong></li>
                         <li><strong>Lexfo</strong></li>
                     </ul>
-                    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="https://www.ssi.gouv.fr/entreprise/qualifications/prestataires-de-services-de-confiance-qualifies/prestataires-de-reponse-aux-incidents-de-securite-pris/" target="_blank">Liste PRIS ANSSI</a></p>
+                    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a
+                            href="catalogue-produits-services-profils-de-protection-sites-certifies-qualifies-agrees-anssi.pdf"
+                            target="_blank">Liste PRIS ANSSI (catalogue)</a></p>
                 </div>
 
                 <div class="card">
@@ -255,7 +443,9 @@
                         <li><strong>Devoteam</strong></li>
                         <li><strong>Capgemini</strong></li>
                     </ul>
-                    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a href="https://www.ssi.gouv.fr/entreprise/qualifications/prestataires-de-services-de-confiance-qualifies/prestataires-daudit-de-la-securite-des-systemes-dinformation-passi/" target="_blank">Liste PASSI ANSSI</a></p>
+                    <p style="margin-top: 0.75rem; font-size: 0.85rem;"><a
+                            href="catalogue-produits-services-profils-de-protection-sites-certifies-qualifies-agrees-anssi.pdf"
+                            target="_blank">Liste PASSI ANSSI (catalogue)</a></p>
                 </div>
 
                 <div class="card">
@@ -317,7 +507,8 @@
                     <h3>EDR / XDR - Détection sur les endpoints</h3>
                 </div>
                 <div class="tool-category-content">
-                    <p>Solutions de détection et réponse sur les postes de travail et serveurs. Vont au-delà de l'antivirus classique.</p>
+                    <p>Solutions de détection et réponse sur les postes de travail et serveurs. Vont au-delà de
+                        l'antivirus classique.</p>
                     <div class="tool-list">
                         <div class="tool-item">
                             <strong>CrowdStrike Falcon</strong>
@@ -379,7 +570,8 @@
                     <h3>Sauvegarde et reprise d'activité</h3>
                 </div>
                 <div class="tool-category-content">
-                    <p>Solutions de backup avec protection contre les ransomwares et capacité de restauration rapide.</p>
+                    <p>Solutions de backup avec protection contre les ransomwares et capacité de restauration rapide.
+                    </p>
                     <div class="tool-list">
                         <div class="tool-item">
                             <strong>Veeam</strong>
@@ -487,7 +679,8 @@
                     <h3>Protection email / Anti-spam</h3>
                 </div>
                 <div class="tool-category-content">
-                    <p>Filtrage des emails malveillants, protection contre le phishing et les pièces jointes dangereuses.</p>
+                    <p>Filtrage des emails malveillants, protection contre le phishing et les pièces jointes
+                        dangereuses.</p>
                     <div class="tool-list">
                         <div class="tool-item">
                             <strong>Proofpoint</strong>
@@ -516,4 +709,5 @@
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">Sources : ANSSI, Gartner, sites éditeurs officiels</p>
     </footer>
 </body>
+
 </html>
