@@ -7,46 +7,48 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .nav { background: #1a365d; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .nav { background: #1e3a5f; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
+        .nav .logo { height: 40px; }
         .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
         .nav a { color: white; text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: #63b3ed; }
-        .header { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .nav a:hover { color: #00d4d4; }
+        .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #00d4d4; }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 3px solid #3182ce; }
+        .tabs { display: flex; gap: 0; margin-bottom: 0; border-bottom: 3px solid #00d4d4; }
         .tab { padding: 1rem 2rem; background: #e2e8f0; cursor: pointer; border: none; font-size: 1rem; font-weight: 500; border-radius: 8px 8px 0 0; }
         .tab:hover { background: #cbd5e0; }
-        .tab.active { background: #3182ce; color: white; }
+        .tab.active { background: #00b4b4; color: white; }
         .tab-content { display: none; padding: 2rem; background: #f7fafc; border: 1px solid #e2e8f0; border-top: none; }
         .tab-content.active { display: block; }
         .section { margin-bottom: 2rem; }
-        .section h3 { color: #2c5282; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
+        .section h3 { color: #0891b2; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e2e8f0; }
         .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-        .vocab-item { background: white; padding: 1rem; border-radius: 5px; border-left: 4px solid #3182ce; }
-        .vocab-item strong { color: #2c5282; }
+        .vocab-item { background: white; padding: 1rem; border-radius: 5px; border-left: 4px solid #00d4d4; }
+        .vocab-item strong { color: #0891b2; }
         .threat-card { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; }
         .threat-card h4 { color: #c53030; margin-bottom: 0.5rem; }
         .threat-card .example { background: #fff5f5; padding: 0.75rem; border-radius: 5px; margin-top: 0.75rem; font-size: 0.9rem; }
         .checklist { background: white; padding: 1.5rem; border-radius: 8px; }
         .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0; }
         .checklist-item:last-child { border-bottom: none; }
-        .checkbox { width: 20px; height: 20px; border: 2px solid #3182ce; border-radius: 4px; flex-shrink: 0; cursor: pointer; }
-        .checkbox.checked { background: #3182ce; position: relative; }
+        .checkbox { width: 20px; height: 20px; border: 2px solid #00b4b4; border-radius: 4px; flex-shrink: 0; cursor: pointer; }
+        .checkbox.checked { background: #00b4b4; position: relative; }
         .checkbox.checked::after { content: '✓'; color: white; position: absolute; top: -2px; left: 3px; font-size: 14px; }
-        .best-practice { background: #c6f6d5; padding: 1rem; border-radius: 5px; margin-bottom: 0.75rem; }
-        .best-practice strong { color: #276749; }
+        .best-practice { background: #f0fdfd; padding: 1rem; border-radius: 5px; margin-bottom: 0.75rem; border-left: 3px solid #00d4d4; }
+        .best-practice strong { color: #0891b2; }
         .warning-box { background: #fed7d7; border-left: 4px solid #c53030; padding: 1rem; margin: 1rem 0; border-radius: 0 5px 5px 0; }
-        .info-box { background: #bee3f8; border-left: 4px solid #3182ce; padding: 1rem; margin: 1rem 0; border-radius: 0 5px 5px 0; }
-        footer { background: #1a365d; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
-        .fiche-reflexe { background: #faf5ff; border: 2px solid #805ad5; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; }
-        .fiche-reflexe h4 { color: #553c9a; margin-bottom: 1rem; }
+        .info-box { background: #f0fdfd; border-left: 4px solid #00d4d4; padding: 1rem; margin: 1rem 0; border-radius: 0 5px 5px 0; }
+        footer { background: #1e3a5f; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+        .fiche-reflexe { background: #f0fdfd; border: 2px solid #00d4d4; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; }
+        .fiche-reflexe h4 { color: #0891b2; margin-bottom: 1rem; }
         .fiche-reflexe ol { margin-left: 1.5rem; }
         .fiche-reflexe li { margin-bottom: 0.5rem; }
     </style>
 </head>
 <body>
     <nav class="nav">
+        <a href="index.html"><img src="cyber.png" alt="CyberGuide" class="logo"></a>
         <ul>
             <li><a href="index.html">Accueil</a></li>
             <li><a href="secteurs.html">Secteurs</a></li>
@@ -198,9 +200,9 @@
                 <h3>Menaces techniques actuelles</h3>
                 <div class="threat-card">
                     <h4>Rançongiciels sophistiqués</h4>
-                    <p>Les groupes comme LockBit ou BlackCat pratiquent la "double extorsion" : chiffrement + exfiltration des données. Vecteurs : RDP exposé, phishing, vulnérabilités VPN.</p>
+                    <p>Les groupes comme Qilin, Akira, LockBit ou Play pratiquent la "double extorsion" : chiffrement + exfiltration des données. Vecteurs : RDP exposé, phishing, vulnérabilités VPN.</p>
                     <div class="example">
-                        <strong>Technique :</strong> Exploitation de vulnérabilités sur les VPN (Fortinet, Pulse Secure), puis mouvement latéral via Cobalt Strike avant déploiement du ransomware.
+                        <strong>Technique :</strong> Exploitation de vulnérabilités sur les VPN (Fortinet, Ivanti), puis mouvement latéral via Cobalt Strike avant déploiement du ransomware. En 2025, 96 groupes actifs recensés (+41% vs 2024).
                     </div>
                 </div>
                 <div class="threat-card">
@@ -296,7 +298,7 @@
                 </div>
                 <div class="threat-card">
                     <h4>Impact financier d'une cyberattaque</h4>
-                    <p>Coût moyen d'une violation de données en France : <strong>4,3 millions d'euros</strong> (IBM 2024). Ce montant inclut :</p>
+                    <p>Coût moyen d'une violation de données : <strong>4,44 M$ (~4,1 M€)</strong> dans le monde (IBM 2025). Pour une PME française : <strong>~466 000 €</strong> en moyenne. Ce montant inclut :</p>
                     <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
                         <li>Pertes d'exploitation (arrêt d'activité)</li>
                         <li>Coûts de remédiation technique</li>
@@ -304,13 +306,15 @@
                         <li>Perte de clients et atteinte à la réputation</li>
                         <li>Frais juridiques et communication de crise</li>
                     </ul>
+                    <p style="margin-top: 0.75rem; font-size: 0.9rem;"><strong>60% des PME victimes ferment dans les 18 mois</strong> suivant une cyberattaque majeure.</p>
                 </div>
                 <div class="threat-card">
                     <h4>Exemples d'incidents médiatisés</h4>
                     <ul style="margin-left: 1.5rem;">
-                        <li><strong>CHU de Rouen (2019)</strong> : paralysie complète pendant plusieurs jours</li>
-                        <li><strong>Mairie de Marseille (2020)</strong> : 400 serveurs chiffrés, services publics interrompus</li>
                         <li><strong>France Travail (2024)</strong> : fuite de données de 43 millions de personnes</li>
+                        <li><strong>Bouygues Telecom (2025)</strong> : 6,4 millions de comptes clients exposés</li>
+                        <li><strong>Ministère de l'Intérieur (2025)</strong> : serveurs de messagerie compromis</li>
+                        <li><strong>5 629 violations notifiées à la CNIL en 2024</strong> (+20% vs 2023)</li>
                     </ul>
                 </div>
             </section>

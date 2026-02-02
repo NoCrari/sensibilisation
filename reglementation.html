@@ -7,47 +7,49 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .nav { background: #1a365d; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; }
+        .nav { background: #1e3a5f; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
+        .nav .logo { height: 40px; }
         .nav ul { list-style: none; display: flex; gap: 2rem; flex-wrap: wrap; }
         .nav a { color: white; text-decoration: none; font-weight: 500; }
-        .nav a:hover { color: #63b3ed; }
-        .header { background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%); color: white; padding: 3rem 2rem; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .nav a:hover { color: #00d4d4; }
+        .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%); color: white; padding: 3rem 2rem; text-align: center; }
+        .header h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #00d4d4; }
         .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        .questionnaire { background: #ebf8ff; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; }
-        .questionnaire h2 { color: #2c5282; margin-bottom: 1rem; }
+        .questionnaire { background: #f0fdfd; padding: 2rem; border-radius: 8px; margin-bottom: 2rem; border-left: 4px solid #00d4d4; }
+        .questionnaire h2 { color: #0891b2; margin-bottom: 1rem; }
         .question { margin-bottom: 1.5rem; }
         .question label { display: block; font-weight: 600; margin-bottom: 0.5rem; }
         .question select { width: 100%; max-width: 400px; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 5px; font-size: 1rem; }
-        .btn { display: inline-block; background: #3182ce; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 500; border: none; cursor: pointer; font-size: 1rem; }
-        .btn:hover { background: #2c5282; }
+        .btn { display: inline-block; background: #00b4b4; color: white; padding: 0.75rem 1.5rem; border-radius: 5px; text-decoration: none; font-weight: 500; border: none; cursor: pointer; font-size: 1rem; }
+        .btn:hover { background: #0891b2; }
         .results { display: none; }
         .results.show { display: block; }
         .reg-card { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 1.5rem; overflow: hidden; }
         .reg-header { padding: 1rem 1.5rem; font-weight: 600; color: white; }
         .reg-header.obligatoire { background: #c53030; }
-        .reg-header.recommande { background: #2f855a; }
-        .reg-header.sectoriel { background: #805ad5; }
+        .reg-header.recommande { background: #0891b2; }
+        .reg-header.sectoriel { background: #1e3a5f; }
         .reg-content { padding: 1.5rem; }
-        .reg-content h4 { color: #2c5282; margin-bottom: 0.5rem; }
+        .reg-content h4 { color: #0891b2; margin-bottom: 0.5rem; }
         .reg-content p { margin-bottom: 0.75rem; }
         .tag { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.85rem; margin-right: 0.5rem; }
         .tag-red { background: #fed7d7; color: #c53030; }
-        .tag-green { background: #c6f6d5; color: #276749; }
-        .tag-blue { background: #bee3f8; color: #2b6cb0; }
-        .actions { background: #f0fff4; padding: 1rem; border-radius: 5px; margin-top: 1rem; }
-        .actions h5 { color: #276749; margin-bottom: 0.5rem; }
+        .tag-green { background: #e0f7f7; color: #0891b2; }
+        .tag-blue { background: #e0f7f7; color: #0891b2; }
+        .actions { background: #f0fdfd; padding: 1rem; border-radius: 5px; margin-top: 1rem; }
+        .actions h5 { color: #0891b2; margin-bottom: 0.5rem; }
         .actions ul { margin-left: 1.5rem; }
         .section { margin-bottom: 3rem; }
-        .section h2 { color: #1a365d; margin-bottom: 1rem; border-bottom: 3px solid #3182ce; padding-bottom: 0.5rem; }
+        .section h2 { color: #1e3a5f; margin-bottom: 1rem; border-bottom: 3px solid #00d4d4; padding-bottom: 0.5rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        footer { background: #1a365d; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
+        footer { background: #1e3a5f; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
         .source { font-size: 0.85rem; color: #718096; margin-top: 0.5rem; }
-        .source a { color: #3182ce; }
+        .source a { color: #00b4b4; }
     </style>
 </head>
 <body>
     <nav class="nav">
+        <a href="index.html"><img src="cyber.png" alt="CyberGuide" class="logo"></a>
         <ul>
             <li><a href="index.html">Accueil</a></li>
             <li><a href="secteurs.html">Secteurs</a></li>

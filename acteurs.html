@@ -19,11 +19,18 @@
         }
 
         .nav {
-            background: #1a365d;
+            background: #1e3a5f;
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav .logo {
+            height: 40px;
         }
 
         .nav ul {
@@ -40,11 +47,11 @@
         }
 
         .nav a:hover {
-            color: #63b3ed;
+            color: #00d4d4;
         }
 
         .header {
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
             color: white;
             padding: 3rem 2rem;
             text-align: center;
@@ -53,6 +60,7 @@
         .header h1 {
             font-size: 2rem;
             margin-bottom: 0.5rem;
+            color: #00d4d4;
         }
 
         .container {
@@ -66,9 +74,9 @@
         }
 
         .section h2 {
-            color: #1a365d;
+            color: #1e3a5f;
             margin-bottom: 1rem;
-            border-bottom: 3px solid #3182ce;
+            border-bottom: 3px solid #00d4d4;
             padding-bottom: 0.5rem;
         }
 
@@ -86,7 +94,7 @@
         }
 
         .card h3 {
-            color: #2c5282;
+            color: #0891b2;
             margin-bottom: 0.5rem;
         }
 
@@ -125,7 +133,7 @@
         }
 
         .card a {
-            color: #3182ce;
+            color: #00b4b4;
         }
 
         .card ul {
@@ -134,14 +142,15 @@
         }
 
         .situation-box {
-            background: #ebf8ff;
+            background: #f0fdfd;
             padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 2rem;
+            border-left: 4px solid #00d4d4;
         }
 
         .situation-box h3 {
-            color: #2c5282;
+            color: #0891b2;
             margin-bottom: 1rem;
         }
 
@@ -155,7 +164,7 @@
             background: white;
             padding: 1rem;
             border-radius: 5px;
-            border-left: 4px solid #3182ce;
+            border-left: 4px solid #00d4d4;
         }
 
         .situation-item h4 {
@@ -172,7 +181,7 @@
         }
 
         .tool-category-header {
-            background: #2c5282;
+            background: #0891b2;
             color: white;
             padding: 1rem 1.5rem;
         }
@@ -199,7 +208,7 @@
         }
 
         .tool-item strong {
-            color: #2c5282;
+            color: #0891b2;
         }
 
         .tool-item .vendor {
@@ -208,7 +217,7 @@
         }
 
         footer {
-            background: #1a365d;
+            background: #1e3a5f;
             color: white;
             text-align: center;
             padding: 2rem;
@@ -225,6 +234,7 @@
 
 <body>
     <nav class="nav">
+        <a href="index.html"><img src="cyber.png" alt="CyberGuide" class="logo"></a>
         <ul>
             <li><a href="index.html">Accueil</a></li>
             <li><a href="secteurs.html">Secteurs</a></li>
